@@ -39,3 +39,17 @@ class TestLibrarySprint2(unittest.TestCase):
         self.library.borrow_book("B001")
         self.library.return_book("B001")
         self.assertEqual(self.library.books["B001"]["status"], "Available")
+
+class TestLibrarySprint3(unittest.TestCase):
+
+    def setUp(self):
+        self.library = Library()
+        self.library.add_book("B001", "Clean Code", "Robert C. Martin")
+
+    def test_report_contains_header(self):
+        report = self.library.generate_report()
+        self.assertIn("Book ID | Title | Author | Status", report)
+
+    def test_report_contains_book_entry(self):
+        report = self.library.generate_report()
+        self.assertIn("B001", report)

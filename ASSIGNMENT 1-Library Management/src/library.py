@@ -28,4 +28,13 @@ class Library:
 
         self.books[book_id]["status"] = "Available"
 
+    def generate_report(self):
+        report_lines = []
+        report_lines.append("Book ID | Title | Author | Status")
+
+        for book_id, details in self.books.items():
+            line = f"{book_id} | {details['title']} | {details['author']} | {details['status']}"
+            report_lines.append(line)
+
+        return "\n".join(report_lines)
 

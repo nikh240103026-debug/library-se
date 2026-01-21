@@ -6,3 +6,5 @@
 | US-3 | Borrow available book          | borrow_book() | test_borrow_available_book           | 2 | v0.2 |
 | US-4 | Prevent double borrowing       | borrow_book() | test_borrow_unavailable_book_raises  | 2 | v0.2 |
 | US-5 | Return borrowed book           | return_book() | test_return_book_updates_status      | 2 | v0.2 |
+
+| US-6 | Generate library report | generate_report() | test_report_contains_header, test_report_contains_book_entry | 3 | v0.3 |
