@@ -19,3 +19,23 @@ class TestLibrarySprint1(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class TestLibrarySprint2(unittest.TestCase):
+
+    def setUp(self):
+        self.library = Library()
+        self.library.add_book("B001", "Clean Code", "Robert C. Martin")
+
+    def test_borrow_available_book(self):
+        self.library.borrow_book("B001")
+        self.assertEqual(self.library.books["B001"]["status"], "Borrowed")
+
+    def test_borrow_unavailable_book_raises_error(self):
+        self.library.borrow_book("B001")
+        with self.assertRaises(ValueError):
+            self.library.borrow_book("B001")
+
+    def test_return_book_updates_status(self):
+        self.library.borrow_book("B001")
+        self.library.return_book("B001")
+        self.assertEqual(self.library.books["B001"]["status"], "Available")
